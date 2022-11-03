@@ -8,9 +8,6 @@ void setup()
     Serial.begin(115200);
     stateMachine.addState([]{ Serial.println("An"); });
     stateMachine.addState([]{ Serial.println("Aus"); });
-
-    Bla a;
-    a.blub();
 }
 
 void loop()
