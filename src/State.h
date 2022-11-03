@@ -4,14 +4,15 @@
 using ActionCallback_t = void(*)();
 using TransitionPredicate_t = bool(*)();
 
-class State
+struct State
 {
-public:
-    void operator()();
-    
-private:
-    ActionCallback_t m_action = nullptr;
-    TransitionPredicate_t m_transitionPredicate = nullptr;
+    State(ActionCallback_t action = []{}, TransitionPredicate_t transitionPredicate = []{ return false; }) :
+        action(action),
+        transitionPredicate(transitionPredicate)
+    {}
+
+    ActionCallback_t action;
+    TransitionPredicate_t transitionPredicate;
 };
 
 #endif
